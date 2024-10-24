@@ -1,1 +1,16 @@
+name: Build and Push React to JFrog
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  call-build-and-publish:
+    uses: Pratbhas54/samplereactlib/.github/workflows/push-react-artifact.yml@main
+    with:
+      node_version: '20.x'  # Latest Node.js version
+      jfrog_url: ${{ secrets.JFROG_URL }}
+      jfrog_username: ${{ secrets.JFROG_USERNAME }}
+      jfrog_api_key: ${{ secrets.JFROG_API_KEY }}
+      jfrog_artifact_path: 'your-artifactory-repo/path/to/upload'
